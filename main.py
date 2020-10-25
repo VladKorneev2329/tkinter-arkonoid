@@ -1,6 +1,5 @@
 from tkinter import *
 import time
-import random
 from settings import *
 from ball import Ball
 from board import Board
@@ -17,12 +16,23 @@ canvas = Canvas(root, width=display_width, height=display_height, highlightthick
 canvas.pack()
 root.update()
 
-ball = Ball(canvas, 'red')
-# balls = [Ball(canvas, random.choice(colours)), Ball(canvas, random.choice(colours)),
-#          Ball(canvas, random.choice(colours)), Ball(canvas, random.choice(colours)),
-#          Ball(canvas, random.choice(colours)), Ball(canvas, random.choice(colours))]
 board = Board(canvas, 'blue')
-
+ball = Ball(canvas, 'red', board)
+# balls = [Ball(canvas, random.choice(colours), board), Ball(canvas, random.choice(colours), board),
+#          Ball(canvas, random.choice(colours), board), Ball(canvas, random.choice(colours), board),
+#         Ball(canvas, random.choice(colours), board), Ball(canvas, random.choice(colours), board),
+#         Ball(canvas, random.choice(colours), board), Ball(canvas, random.choice(colours), board),
+#         Ball(canvas, random.choice(colours), board), Ball(canvas, random.choice(colours), board),
+#         Ball(canvas, random.choice(colours), board), Ball(canvas, random.choice(colours), board),
+#         Ball(canvas, random.choice(colours), board), Ball(canvas, random.choice(colours), board),
+#         Ball(canvas, random.choice(colours), board), Ball(canvas, random.choice(colours), board),
+#         Ball(canvas, random.choice(colours), board), Ball(canvas, random.choice(colours), board),
+#         Ball(canvas, random.choice(colours), board), Ball(canvas, random.choice(colours), board),
+#         Ball(canvas, random.choice(colours), board), Ball(canvas, random.choice(colours), board),
+#         Ball(canvas, random.choice(colours), board), Ball(canvas, random.choice(colours), board),
+#         Ball(canvas, random.choice(colours), board), Ball(canvas, random.choice(colours), board),
+#          Ball(canvas, random.choice(colours), board), Ball(canvas, random.choice(colours), board)]
+canvas.bind('<Motion>', board.move)
 while True:
     # for ball in balls:
     #     ball.draw()
@@ -30,8 +40,4 @@ while True:
     board.draw()
     root.update_idletasks()
     root.update()
-    time.sleep(1//60)
-
-
-
-
+    time.sleep(1/60)
