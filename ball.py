@@ -32,7 +32,9 @@ class Ball:
         elif pos[2] >= display_width:
             self.pos_x = -self.speed
 
-        if self.board.canvas.coords(self.board.id)[1] <= self.canvas.coords(self.id)[3]:
+        if self.board.canvas.coords(self.board.id)[1] <= self.canvas.coords(self.id)[3] and \
+                self.board.canvas.coords(self.board.id)[1] >= self.canvas.coords(self.id)[3] - self.board.height:
+
             if self.board.canvas.coords(self.board.id)[0] <= self.canvas.coords(self.id)[2] and \
                     self.canvas.coords(self.id)[0] <= self.board.canvas.coords(self.board.id)[2]:
                 self.pos_y = -self.speed
